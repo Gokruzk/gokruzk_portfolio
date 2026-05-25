@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: 'en' | 'es';
+}
+
+const { title, description = "SYSTEM_ARCHITECT - Professional Full-Stack Developer Portfolio specializing in scalable systems, clean design, and technical precision.", lang = 'en' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+      
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+  <body>
+    <slot />
+    
+    <script>
+      // Header scroll background modification using classes
+      const header = document.querySelector('header');
+      if (header) {
+        const toggleScrolled = () => {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        };
+        
+        // Initial check on load
+        toggleScrolled();
+        
+        // Listen on scroll
+        window.addEventListener('scroll', toggleScrolled);
+      }
+    </script>
+  </body>
+</html>
