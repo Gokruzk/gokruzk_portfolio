@@ -1,0 +1,251 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const t = translations[lang];
+---
+
+<section class="projects-section" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{t.projects_title}</h2>
+      <p class="section-subtitle">
+        {t.projects_subtitle}
+      </p>
+    </div>
+
+    <div class="projects-stack">
+      {t.projects_list.map((project, index) => (
+        <div class={`project-item ${index % 2 !== 0 ? 'reverse' : ''}`}>
+          <div class="project-preview">
+            <div class="browser-header">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <img src={project.image} alt={project.title} class="project-img" />
+          </div>
+          
+          <div class="project-details">
+            <span class="project-category">{project.category}</span>
+            <h3 class="project-item-title">{project.title}</h3>
+            <p class="project-description">{project.description}</p>
+            
+            <div class="project-tags">
+              {project.tags.map(tag => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+            
+            <div class="project-actions">
+              <a href={project.codeLink} class="action-link outline-action">
+                <span class="material-symbols-outlined action-icon">code</span>
+                <span>{t.projects_view_code}</span>
+              </a>
+              <a href={project.demoLink} class="action-link primary-action">
+                <span class="material-symbols-outlined action-icon">open_in_new</span>
+                <span>{t.projects_demo}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    padding: var(--section-gap) 0;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--stack-lg) auto;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: var(--stack-sm);
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .projects-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  .project-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-md);
+    align-items: center;
+  }
+
+  .project-preview {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background-color: var(--bg-primary);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: border-color var(--transition-fast);
+  }
+
+  .project-preview:hover {
+    border-color: var(--primary);
+  }
+
+  .browser-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background-color: #cbd5e1;
+  }
+
+  .project-img {
+    width: 100%;
+    height: 250px;
+    object-cover: cover;
+    object-position: top;
+    display: block;
+    filter: grayscale(20%);
+    transition: filter var(--transition-normal);
+  }
+
+  .project-preview:hover .project-img {
+    filter: grayscale(0%);
+  }
+
+  .project-details {
+    width: 100%;
+  }
+
+  .project-category {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .project-item-title {
+    font-size: 1.5rem;
+    margin: var(--stack-sm) 0;
+  }
+
+  .project-description {
+    font-size: 0.937rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--stack-md);
+    line-height: 1.6;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--stack-sm);
+    margin-bottom: var(--stack-md);
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary-border);
+    border-radius: var(--radius-full);
+    font-weight: 500;
+  }
+
+  .project-actions {
+    display: flex;
+    gap: var(--stack-sm);
+  }
+
+  .action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.812rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .primary-action {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary-border);
+  }
+
+  .primary-action:hover {
+    background-color: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+  }
+
+  .outline-action {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+  }
+
+  .outline-action:hover {
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+  }
+
+  .action-icon {
+    font-size: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .project-item {
+      flex-direction: row;
+      gap: 3rem;
+    }
+    
+    .project-item.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .project-preview {
+      width: 50%;
+    }
+
+    .project-details {
+      width: 50%;
+    }
+
+    .project-img {
+      height: 320px;
+    }
+  }
+</style>

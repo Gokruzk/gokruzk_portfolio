@@ -1,0 +1,103 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const t = translations[lang];
+---
+<section class="hero-section">
+  <div class="container hero-container">
+    <p class="hero-label">{t.hero_label}</p>
+    <h1 class="hero-title">
+      {t.hero_title_1}<span class="highlight">{t.hero_title_highlight}</span>{t.hero_title_2}
+    </h1>
+    <p class="hero-subtitle">{t.hero_subtitle}</p>
+    <div class="hero-actions">
+      <a href="#projects" class="solid-btn">{t.hero_btn_view_projects}</a>
+      <a href="#contact" class="solid-btn-outline">{t.hero_btn_contact}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    position: relative;
+    padding: 8rem 0;
+    background-color: var(--bg-primary);
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  /* Structural blueprint-like layout grid using border lines */
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(var(--bg-secondary) 1px, transparent 1px),
+      linear-gradient(90deg, var(--bg-secondary) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+  }
+
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: var(--stack-sm);
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.15;
+    margin-bottom: var(--stack-md);
+    letter-spacing: -0.02em;
+  }
+
+  .highlight {
+    color: var(--primary);
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: var(--stack-lg);
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-sm);
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (min-width: 480px) {
+    .hero-actions {
+      flex-direction: row;
+      width: auto;
+    }
+  }
+</style>

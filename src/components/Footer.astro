@@ -1,0 +1,79 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const t = translations[lang];
+---
+<footer class="footer">
+  <div class="container footer-container">
+    <div class="footer-brand">
+      <p class="copyright">
+        © {new Date().getFullYear()} {t.footer_text}
+      </p>
+    </div>
+</footer>
+
+<style>
+  .footer {
+    padding: var(--stack-lg) 0;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-md);
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .brand-name {
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.05em;
+  }
+
+  .copyright {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--stack-md);
+    justify-content: center;
+  }
+
+  .footer-links a {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+  }
+
+  .footer-links a:hover {
+    color: var(--primary);
+  }
+
+  @media (min-width: 768px) {
+    .footer-container {
+      flex-direction: row;
+    }
+    
+    .footer-brand {
+      text-align: left;
+    }
+  }
+</style>
