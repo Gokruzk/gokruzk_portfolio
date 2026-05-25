@@ -1,0 +1,148 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const t = translations[lang];
+
+// Icon mapping for each skill category
+const categoryIcons: Record<string, string> = {
+  // English keys
+  "Languages": "code",
+  "Backend": "dns",
+  "Frontend": "devices",
+  "Databases": "database",
+  "Tools & Environment": "terminal",
+  "Cloud": "cloud",
+  // Spanish keys
+  "Lenguajes": "code",
+  "Bases de Datos": "database",
+  "Herramientas y Entorno": "terminal",
+};
+
+const getIcon = (title: string) => {
+  return categoryIcons[title] || "terminal";
+};
+---
+
+<section class="skills-section" id="skills">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{t.skills_title}</h2>
+      <p class="section-subtitle">
+        {t.skills_subtitle}
+      </p>
+    </div>
+    
+    <div class="skills-grid">
+      {t.skills_categories.map(category => (
+        <div class="tech-card category-card">
+          <div class="category-header">
+            <span class="material-symbols-outlined category-icon">{getIcon(category.title)}</span>
+            <h3 class="category-title">{category.title}</h3>
+          </div>
+          <div class="skills-tags">
+            {category.items.map(item => (
+              <span class="skill-tag">{item}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-section {
+    padding: var(--section-gap) 0;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .section-header {
+    max-width: 600px;
+    margin-bottom: var(--stack-lg);
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: var(--stack-sm);
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--stack-md);
+  }
+
+  @media (min-width: 640px) {
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .skills-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-md);
+    padding: var(--stack-md) !important;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+  }
+
+  .category-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+  }
+
+  .category-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    font-family: var(--font-mono);
+    font-size: 0.812rem;
+    padding: 0.35rem 0.75rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .skill-tag:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
+  }
+</style>
