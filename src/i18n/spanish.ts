@@ -63,21 +63,21 @@ export const spn: LanguageTranslations = {
     },
     {
       category: 'Desarrollo Full-Stack',
-      title: 'Fitness Application',
+      title: 'Aplicación de Gimnasio',
       description: 'Diseñé y desarrollé una aplicación móvil full-stack para la planificación de entrenamientos y gestión de rutinas en gimnasios. Desarrollé el frontend reactivo en React Native junto con un backend de alto rendimiento en FastAPI y MySQL. Integré Amazon S3 para el almacenamiento de medios, implementé WebSockets para alertas en tiempo real entre usuarios y entrenadores, y gestioné notificaciones automatizadas por correo con GCP.',
       tags: ['Python', 'TypeScript', 'React Native', 'FastAPI', 'Prisma' ,'MySQL', 'WebSockets', 'JWT', 'AWS', 'GCP'],
       image: '/fitness.png'
     },
     {
       category: 'Ingeniería Full-Stack',
-      title: 'Device Integration & Backend',
+      title: 'Aplicación de Transmisión de Datos en Vivo',
       description: 'Lideré el diseño e implementación de una aplicación multiplataforma de alto rendimiento y su backend utilizando FastAPI, Next.js y React Native. Diseñé una Arquitectura Hexagonal (Puertos y Adaptadores) para desacoplar la lógica de negocio, implementando WebSockets y Server-Sent Events (SSE) para el flujo bidireccional de datos entre dispositivos y el frontend. Apliqué patrones de diseño avanzados (Singleton, Factory, Repository) e integré GCP para autenticación segura.',
       tags: ['Python', 'TypeScript', 'FastAPI', 'React Native', 'Next.js', 'WebSockets', 'Prisma', 'PostgreSQL' ,'JWT', 'GCP'],
       image: '/device_backend.png'
     },
     {
       category: 'Desarrollo Backend',
-      title: 'Photo Manager Service',
+      title: 'Servicio de Gestión de Imágenes',
       description: 'Desarrollé un backend de gestión de fotos diseñado con flexibilidad arquitectónica. Utilizando FastAPI, Alembic y Prisma dentro de una Arquitectura Hexagonal, el sistema desacopla la lógica de negocio permitiendo cambiar de ORM sin fricciones. Implementé OAuth2 para seguridad y utilicé uv para un desarrollo rápido y reproducible.',
       tags: ['Python', 'FastAPI', 'Alembic', 'Prisma' ,'MySQL', 'PostgreSQL', 'JWT'],
       image: '/photo_manager.png',
@@ -85,7 +85,7 @@ export const spn: LanguageTranslations = {
     },
     {
       category: 'Desarrollo Full-Stack',
-      title: 'Collaborative Survey Platform',
+      title: 'Plataforma Colaborativa de Encuestas',
       description: 'Desarrollé una plataforma de encuestas colaborativas utilizando Django Rest Framework y PostgreSQL. Utilicé Django Channels para implementar WebSockets para actualizaciones de encuestas en vivo. Mi trabajo incluyó la gestión y creación de migraciones semilla para asegurar entornos de desarrollo y producción consistentes.',
       tags: ['Python', 'TypeScript', 'Django', 'Next.js', 'PostgreSQL', 'WebSockets', 'JWT'],
       image: '/survey_platform.png'
