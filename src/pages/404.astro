@@ -13,14 +13,11 @@ import Footer from '../components/Footer.astro';
       
       <div class="message-group">
         <h2 id="error-title" class="error-title">Page Not Found</h2>
-        <p id="error-desc" class="error-desc font-mono">
-          The requested system route could not be resolved.
-        </p>
       </div>
 
       <div class="action-group">
         <a href="/" id="back-btn" class="solid-btn">
-          Return to Core System
+          Return
         </a>
       </div>
     </div>
@@ -111,15 +108,13 @@ import Footer from '../components/Footer.astro';
       en: {
         docTitle: "404 - Page Not Found",
         title: "Page Not Found",
-        desc: "The requested system route could not be resolved.",
-        btn: "Return to Core System",
+        btn: "Return",
         href: "/"
       },
       es: {
         docTitle: "404 - Página No Encontrada",
         title: "Página No Encontrada",
-        desc: "La ruta del sistema solicitada no pudo ser resuelta.",
-        btn: "Regresar al Sistema Central",
+        btn: "Regresar",
         href: "/es"
       }
     };
@@ -129,12 +124,10 @@ import Footer from '../components/Footer.astro';
     // Update Content
     const docTitle = document.querySelector('title');
     const errorTitle = document.getElementById('error-title');
-    const errorDesc = document.getElementById('error-desc');
     const backBtn = document.getElementById('back-btn') as HTMLAnchorElement;
 
     if (docTitle) docTitle.textContent = t.docTitle;
     if (errorTitle) errorTitle.textContent = t.title;
-    if (errorDesc) errorDesc.textContent = t.desc;
     if (backBtn) {
       backBtn.textContent = t.btn;
       backBtn.href = t.href;
