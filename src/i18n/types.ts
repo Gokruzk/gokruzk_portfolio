@@ -30,8 +30,8 @@ export interface LanguageTranslations {
     description: string;
     tags: string[];
     image: string;
-    codeLink: string;
-    demoLink: string;
+    codeLink?: string;
+    demoLink?: string;
   }[];
   // Contact
   contact_title: string;

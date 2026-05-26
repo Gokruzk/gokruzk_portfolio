@@ -24,7 +24,18 @@ const { title, description = "SYSTEM_ARCHITECT - Professional Full-Stack Develop
     <!-- Fonts and Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
 
+    <style is:inline>
+      /* Hide page body during scroll restoration to eliminate jumping/flickering */
+      html.js-scroll-restoring body {
+        visibility: hidden !important;
+      }
+    </style>
+
     <script is:inline>
+      if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('scrollPosition') !== null) {
+        document.documentElement.classList.add('js-scroll-restoring');
+      }
+
       const theme = (() => {
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
           return localStorage.getItem('theme');
