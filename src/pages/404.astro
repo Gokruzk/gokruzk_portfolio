@@ -4,53 +4,23 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="404 - System Crash" lang="en">
+<Layout title="404 - Page Not Found" lang="en">
   <Header lang="en" />
   
-  <main class="error-page-container">
-    <!-- Background cyber grid and scanline overlay -->
-    <div class="cyber-grid"></div>
-    <div class="scanline"></div>
-
+  <main class="error-container">
     <div class="error-content">
-      <!-- Big Animated 404 Text -->
-      <div class="glitch-container">
-        <h1 class="glow-404" id="glow-404">404</h1>
-        <div class="corner-border top-left"></div>
-        <div class="corner-border bottom-right"></div>
+      <h1 class="error-code font-mono">404</h1>
+      
+      <div class="message-group">
+        <h2 id="error-title" class="error-title">Page Not Found</h2>
+        <p id="error-desc" class="error-desc font-mono">
+          The requested system route could not be resolved.
+        </p>
       </div>
 
-      <!-- Error Status Indicator Badge -->
-      <div class="status-badge">
-        <span class="status-dot"></span>
-        <span class="status-text font-mono" id="status-text">SYSTEM_CRASH</span>
-      </div>
-
-      <!-- High-Fidelity Monospaced Terminal -->
-      <div class="terminal-container">
-        <div class="terminal-header">
-          <div class="terminal-dot dot-close"></div>
-          <div class="terminal-dot dot-minimize"></div>
-          <div class="terminal-dot dot-expand"></div>
-          <span class="terminal-title font-mono">guest@system_architect:~</span>
-        </div>
-        <div class="terminal-body font-mono">
-          <p class="error-line" id="error-title">SYSTEM STATUS: 404 - SEGMENTATION_FAULT</p>
-          <p class="terminal-cursor text-secondary" id="error-desc">Requested route not found in kernel page table.</p>
-        </div>
-      </div>
-
-      <!-- Navigation & Core Recovery Action Buttons -->
-      <div class="actions-container">
-        <a href="/" class="solid-btn btn-glow font-mono recovery-btn" id="home-btn">
-          <span class="material-symbols-outlined">memory</span>
-          <span id="btn-text">Return to System Core</span>
-        </a>
-        <div class="spanish-translation font-mono" id="spanish-sub">
-          Regresar al Núcleo del Sistema
-        </div>
-        <a href="/#projects" class="solid-btn-outline font-mono explore-btn" id="explore-btn">
-          Explore Architecture
+      <div class="action-group">
+        <a href="/" id="back-btn" class="solid-btn">
+          Return to Core System
         </a>
       </div>
     </div>
@@ -60,335 +30,114 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
-  .error-page-container {
+  .error-container {
     min-height: calc(100vh - 10rem);
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     padding: var(--stack-lg) var(--gutter);
-    overflow: hidden;
     background-color: var(--bg-primary);
   }
 
-  /* Cyber Grid Background style */
-  .cyber-grid {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.15;
-    background-image: 
-      linear-gradient(to right, var(--primary) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--primary) 1px, transparent 1px);
-    background-size: 50px 50px;
-  }
-
-  :global(html.dark) .cyber-grid {
-    opacity: 0.08;
-  }
-
-  /* Retro CRT Scanline Overlay */
-  .scanline {
-    position: absolute;
-    width: 100%;
-    height: 100px;
-    z-index: 1;
-    pointer-events: none;
-    background: linear-gradient(
-      0deg, 
-      rgba(34, 197, 94, 0) 0%, 
-      rgba(34, 197, 94, 0.04) 50%, 
-      rgba(34, 197, 94, 0) 100%
-    );
-    opacity: 0.6;
-    bottom: 100%;
-    animation: scanline 8s linear infinite;
-  }
-
-  @keyframes scanline {
-    0% { bottom: 120%; }
-    100% { bottom: -120px; }
-  }
-
-  /* Content Wrapper */
   .error-content {
-    position: relative;
-    z-index: 10;
-    max-width: 650px;
+    max-width: 480px;
     width: 100%;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--stack-md);
-    text-align: center;
   }
 
-  /* Glow 404 Indicator */
-  .glitch-container {
-    position: relative;
-    padding: 1.5rem 3rem;
-  }
-
-  .glow-404 {
-    font-size: clamp(6rem, 15vw, 10rem);
+  .error-code {
+    font-size: clamp(5rem, 12vw, 8rem);
     line-height: 1;
     font-weight: 800;
     margin: 0;
-    letter-spacing: -0.05em;
-    font-family: var(--font-sans);
     background: linear-gradient(135deg, var(--primary), #38bdf8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 15px rgba(34, 197, 94, 0.3)) drop-shadow(0 0 30px rgba(56, 189, 248, 0.15));
-    animation: float 6s ease-in-out infinite, flicker 5s infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-
-  @keyframes flicker {
-    0%, 19.99%, 22%, 62.99%, 64%, 64.99%, 70%, 100% { opacity: 1; }
-    20%, 21.99%, 63%, 63.99%, 65%, 69.99% { opacity: 0.85; }
-  }
-
-  /* Tech Deco Borders */
-  .corner-border {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    border-color: var(--primary);
-    border-style: solid;
-    opacity: 0.6;
-  }
-
-  .top-left {
-    top: 0;
-    left: 0;
-    border-width: 2px 0 0 2px;
-  }
-
-  .bottom-right {
-    bottom: 0;
-    right: 0;
-    border-width: 0 2px 2px 0;
-  }
-
-  /* Status Badge */
-  .status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 1rem;
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-  }
-
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #ef4444;
-    box-shadow: 0 0 8px #ef4444;
-    animation: pulse 1.5s infinite;
+    filter: drop-shadow(0 0 10px var(--primary-light));
+    animation: pulse 4s ease-in-out infinite;
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+    0%, 100% { transform: scale(1); opacity: 0.95; }
+    50% { transform: scale(1.03); opacity: 1; }
   }
 
-  .status-text {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #ef4444;
-    letter-spacing: 0.15em;
-  }
-
-  /* Terminal Window */
-  .terminal-container {
-    width: 100%;
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    text-align: left;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-    transition: border-color var(--transition-normal);
-  }
-
-  :global(html.dark) .terminal-container {
-    background-color: #0d1322;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-  }
-
-  .terminal-container:hover {
-    border-color: var(--primary);
-  }
-
-  .terminal-header {
-    background-color: var(--bg-tertiary);
-    padding: 0.75rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-bottom: 1px solid var(--border-color);
-  }
-
-  :global(html.dark) .terminal-header {
-    background-color: #121929;
-  }
-
-  .terminal-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-  }
-
-  .dot-close { background-color: #ef4444; }
-  .dot-minimize { background-color: #f59e0b; }
-  .dot-expand { background-color: #10b981; }
-
-  .terminal-title {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-left: 0.5rem;
-  }
-
-  .terminal-body {
-    padding: 1.25rem;
-    font-size: 0.875rem;
-    line-height: 1.6;
-    color: var(--text-secondary);
-  }
-
-  .error-line {
-    color: #ef4444;
-    font-weight: 500;
-  }
-
-  .terminal-cursor {
-    margin-top: 0.5rem;
-    display: flex;
-    align-items: center;
-  }
-
-  .terminal-cursor::after {
-    content: "█";
-    color: var(--primary);
-    margin-left: 4px;
-    animation: blink 1s step-end infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  /* Actions Layout */
-  .actions-container {
-    width: 100%;
-    max-width: 320px;
+  .message-group {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    margin-top: var(--stack-md);
+    gap: var(--stack-sm);
   }
 
-  .recovery-btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.85rem;
+  .error-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
   }
 
-  .recovery-btn .material-symbols-outlined {
-    font-size: 1.15rem;
-  }
-
-  .explore-btn {
-    width: 100%;
-    padding: 0.85rem;
-  }
-
-  .btn-glow {
-    position: relative;
-    box-shadow: 0 0 0 rgba(34, 197, 94, 0);
-  }
-
-  .btn-glow:hover {
-    box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
-    animation: pulse-glow 2s infinite;
-  }
-
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 10px rgba(34, 197, 94, 0.3); }
-    50% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.6); }
-  }
-
-  .spanish-translation {
-    font-size: 0.75rem;
+  .error-desc {
+    font-size: 0.875rem;
     color: var(--text-muted);
-    font-style: italic;
-    opacity: 0.8;
-    margin-bottom: 0.25rem;
+    border-left: 2px solid var(--primary);
+    padding-left: 0.75rem;
+    text-align: left;
+    background-color: var(--bg-secondary);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .action-group {
+    margin-top: var(--stack-sm);
+    width: 100%;
+  }
+
+  #back-btn {
+    display: inline-block;
+    width: 100%;
+    max-width: 260px;
   }
 </style>
 
 <script>
-  // Dynamic Client-Side Routing and Localization
+  // Client-side Localization & Path Integration
   document.addEventListener('DOMContentLoaded', () => {
     const isSpanish = window.location.pathname.startsWith('/es');
     
-    // Elements to translate
+    // Translation Dictionary
+    const content = {
+      en: {
+        docTitle: "404 - Page Not Found",
+        title: "Page Not Found",
+        desc: "The requested system route could not be resolved.",
+        btn: "Return to Core System",
+        href: "/"
+      },
+      es: {
+        docTitle: "404 - Página No Encontrada",
+        title: "Página No Encontrada",
+        desc: "La ruta del sistema solicitada no pudo ser resuelta.",
+        btn: "Regresar al Sistema Central",
+        href: "/es"
+      }
+    };
+
+    const t = isSpanish ? content.es : content.en;
+
+    // Update Content
     const docTitle = document.querySelector('title');
-    const glow404 = document.getElementById('glow-404');
-    const statusText = document.getElementById('status-text');
     const errorTitle = document.getElementById('error-title');
     const errorDesc = document.getElementById('error-desc');
-    const btnText = document.getElementById('btn-text');
-    const homeBtn = document.getElementById('home-btn') as HTMLAnchorElement;
-    const exploreBtn = document.getElementById('explore-btn') as HTMLAnchorElement;
-    const spanishSub = document.getElementById('spanish-sub');
+    const backBtn = document.getElementById('back-btn') as HTMLAnchorElement;
 
-    if (isSpanish) {
-      if (docTitle) docTitle.textContent = "404 - Caída del Sistema";
-      if (statusText) statusText.textContent = "CAIDA_DEL_SISTEMA";
-      if (errorTitle) errorTitle.textContent = "ESTADO DEL SISTEMA: 404 - FALLO_SEGMENTACION";
-      if (errorDesc) errorDesc.textContent = "La ruta solicitada no fue encontrada en la tabla de páginas del kernel.";
-      if (btnText) btnText.textContent = "Regresar al Núcleo";
-      if (homeBtn) homeBtn.href = "/es";
-      if (exploreBtn) {
-        exploreBtn.textContent = "Explorar Arquitectura";
-        exploreBtn.href = "/es#projects";
-      }
-      if (spanishSub) {
-        spanishSub.textContent = "Return to System Core";
-      }
-    }
-
-    // Micro-interaction: Mouse parallax for the 404 text
-    const mainContainer = document.querySelector('.error-page-container');
-    if (mainContainer && glow404) {
-      mainContainer.addEventListener('mousemove', (e: any) => {
-        const rect = mainContainer.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        
-        // Soft offset movement
-        const moveX = x / 40;
-        const moveY = y / 40;
-        glow404.style.transform = `translate(${moveX}px, ${moveY}px)`;
-      });
-
-      mainContainer.addEventListener('mouseleave', () => {
-        glow404.style.transform = 'translate(0, 0)';
-      });
+    if (docTitle) docTitle.textContent = t.docTitle;
+    if (errorTitle) errorTitle.textContent = t.title;
+    if (errorDesc) errorDesc.textContent = t.desc;
+    if (backBtn) {
+      backBtn.textContent = t.btn;
+      backBtn.href = t.href;
     }
   });
 </script>
