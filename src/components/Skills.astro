@@ -53,7 +53,7 @@ const getDeviconUrl = (tech: string) => {
   if (tech.toLowerCase() === 'sql') return "/sql.svg";
   const slug = deviconMapping[tech.toLowerCase()];
   if (!slug) return "";
-  return `https://cdn.devicons.dev/icons/${slug}`;
+  return `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${slug}`;
 };
 ---
 
