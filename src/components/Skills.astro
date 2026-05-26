@@ -27,33 +27,33 @@ const getIcon = (title: string) => {
   return categoryIcons[title] || "terminal";
 };
 
-// SVG icons mapping from Devicon
+// SVG icons mapping from @dev.icons/core
 const deviconMapping: Record<string, string> = {
-  "python": "python/python-original.svg",
-  "typescript": "typescript/typescript-original.svg",
-  "sql": "sql.svg", // We will handle SQL separately in the getter, but mapping is kept
-  "django (drf)": "django/django-plain.svg",
-  "fastapi": "fastapi/fastapi-original.svg",
-  "next.js": "nextjs/nextjs-original.svg",
-  "react": "react/react-original.svg",
-  "tailwind css": "tailwindcss/tailwindcss-original.svg",
-  "postgresql": "postgresql/postgresql-original.svg",
-  "mssql": "microsoftsqlserver/microsoftsqlserver-original.svg",
-  "mysql": "mysql/mysql-original.svg",
-  "mongodb": "mongodb/mongodb-original.svg",
-  "linux": "linux/linux-original.svg",
-  "docker": "docker/docker-original.svg",
-  "git": "git/git-original.svg",
-  "neovim": "neovim/neovim-original.svg",
-  "vercel": "vercel/vercel-original.svg",
-  "aws": "amazonwebservices/amazonwebservices-original-wordmark.svg"
+  "python": "python",
+  "typescript": "typescript",
+  "sql": "sql", // Handled separately in the getter
+  "django (drf)": "django",
+  "fastapi": "fastapi",
+  "next.js": "nextjs",
+  "react": "react",
+  "tailwind css": "tailwind",
+  "postgresql": "postgresql",
+  "mssql": "mssql",
+  "mysql": "mysql",
+  "mongodb": "mongodb",
+  "linux": "linux-tux",
+  "docker": "docker",
+  "git": "git",
+  "neovim": "neovim",
+  "vercel": "vercel",
+  "aws": "aws-aurora"
 };
 
 const getDeviconUrl = (tech: string) => {
   if (tech.toLowerCase() === 'sql') return "/sql.svg";
   const slug = deviconMapping[tech.toLowerCase()];
   if (!slug) return "";
-  return `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${slug}`;
+  return `https://cdn.jsdelivr.net/npm/@dev.icons/core@latest/export-files/icons/${slug}.svg`;
 };
 ---
 
