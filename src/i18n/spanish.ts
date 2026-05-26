@@ -8,9 +8,9 @@ export const spn: LanguageTranslations = {
   resume: "Currículum",
   hero_label: "Ingeniero Full-Stack",
   hero_title_1: "Construyendo ",
-  hero_title_highlight: "Arquitecturas Digitales",
+  hero_title_highlight: "Herramientas Digitales",
   hero_title_2: " Robustas",
-  hero_subtitle: "Diseñando sistemas escalables con precisión técnica. Especializado en microservicios distribuidos, APIs de baja latencia y frontends de alto rendimiento que definen los estándares de software moderno.",
+  hero_subtitle: "Comprometido con el aprendizaje continuo, la eficiencia en entornos de desarrollo modernos y la entrega de soluciones funcionales y bien estructuradas",
   hero_btn_view_projects: "Ver Proyectos",
   hero_btn_contact: "Ponte en Contacto",
   skills_title: "Stack Tecnológico",
@@ -41,8 +41,7 @@ export const spn: LanguageTranslations = {
       items: ["Vercel", "AWS"]
     }
   ],
-  projects_title: "Arquitecturas Destacadas",
-  projects_subtitle: "Sistemas del mundo real diseñados para escala, confiabilidad y precisión.",
+  projects_title: "Proyectos Destacados",
   projects_view_code: "Ver Código",
   projects_demo: "Demo en Vivo",
   projects_list: [
@@ -75,7 +74,7 @@ export const spn: LanguageTranslations = {
     }
   ],
   contact_title: "Iniciar Conexión",
-  contact_subtitle: "¿Listo para discutir tu próximo desafío técnico? Estoy disponible para consultoría estratégica y revisión de arquitectura.",
+  contact_subtitle: "¿Listo para discutir tu próximo desafío técnico? Estoy disponible para consultoría estratégica y revisión de proyecto.",
   contact_location: "Ecuador / Remoto",
   footer_text: "Portafolio Técnico"
 };
