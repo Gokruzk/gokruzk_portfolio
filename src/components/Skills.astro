@@ -1,5 +1,6 @@
 ---
 import { translations } from '../i18n/translations';
+import 'devicons/dist/devicons.css';
 
 interface Props {
   lang?: 'en' | 'es';
@@ -27,18 +28,16 @@ const getIcon = (title: string) => {
   return categoryIcons[title] || "terminal";
 };
 
-// SVG icons mapping from @dev.icons/core
+// Map tech to devicon classes
 const deviconMapping: Record<string, string> = {
   "python": "python",
   "typescript": "typescript",
-  "sql": "sql", // Handled separately in the getter
   "django (drf)": "django",
   "fastapi": "fastapi",
   "next.js": "nextjs",
   "react": "react",
   "tailwind css": "tailwind",
   "postgresql": "postgresql",
-  "mssql": "mssql",
   "mysql": "mysql",
   "mongodb": "mongodb",
   "linux": "linux-tux",
@@ -46,14 +45,12 @@ const deviconMapping: Record<string, string> = {
   "git": "git",
   "neovim": "neovim",
   "vercel": "vercel",
-  "aws": "aws-aurora"
+  "aws": "aws"
 };
 
-const getDeviconUrl = (tech: string) => {
-  if (tech.toLowerCase() === 'sql') return "/sql.svg";
-  const slug = deviconMapping[tech.toLowerCase()];
-  if (!slug) return "";
-  return `https://cdn.jsdelivr.net/npm/@dev.icons/core@latest/export-files/icons/${slug}.svg`;
+const getDeviconClass = (tech: string) => {
+  if (tech.toLowerCase() === 'sql') return "";
+  return deviconMapping[tech.toLowerCase()] || "";
 };
 ---
 
@@ -75,19 +72,16 @@ const getDeviconUrl = (tech: string) => {
           </div>
           <div class="skills-tags">
             {category.items.map(item => {
-              const iconUrl = getDeviconUrl(item);
+              const iconClass = getDeviconClass(item);
+              const isSql = item.toLowerCase() === 'sql';
               return (
                 <span class="skill-tag" title={item}>
-                  {iconUrl ? (
-                    <img 
-                      src={iconUrl} 
-                      alt={item} 
-                      class="tech-icon tech-icon-img" 
-                      loading="lazy"
-                      style="display: none;"
-                    />
+                  {isSql ? (
+                    <img src="/sql.svg" alt="SQL" class="tech-icon-img" />
+                  ) : iconClass ? (
+                    <i class={`devicon devicon-${iconClass} tech-icon-font`}></i>
                   ) : null}
-                  <span class="tech-text">{item}</span>
+                  <span class="tech-text" style={isSql || iconClass ? "display: none;" : ""}>{item}</span>
                 </span>
               );
             })}
@@ -177,7 +171,7 @@ const getDeviconUrl = (tech: string) => {
     justify-content: center;
     font-family: var(--font-mono);
     font-size: 0.812rem;
-    padding: 0.5rem 0.8rem;
+    padding: 0.5rem;
     min-width: 3.25rem;
     height: 3.25rem;
     background-color: var(--bg-primary);
@@ -188,7 +182,16 @@ const getDeviconUrl = (tech: string) => {
     box-sizing: border-box;
   }
 
-  .tech-icon {
+  .tech-icon-font {
+    font-size: 2rem;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tech-icon-img {
     width: 2.25rem;
     height: 2.25rem;
     object-fit: contain;
@@ -196,40 +199,11 @@ const getDeviconUrl = (tech: string) => {
 
   .skill-tag:hover {
     border-color: var(--primary);
-    color: var(--primary);
     background-color: var(--primary-light);
     transform: translateY(-2px);
   }
+
+  .skill-tag:hover .tech-icon-font {
+    color: var(--primary);
+  }
 </style>
-
-<script>
-  // Robust image loader to prevent browser cache gotchas and hide text seamlessly
-  const images = document.querySelectorAll('.tech-icon-img') as NodeListOf<HTMLImageElement>;
-  
-  images.forEach(img => {
-    const textSpan = img.nextElementSibling as HTMLSpanElement;
-
-    const handleLoad = () => {
-      img.style.display = 'inline-block';
-      if (textSpan) textSpan.style.display = 'none';
-    };
-
-    const handleError = () => {
-      img.style.display = 'none';
-      if (textSpan) textSpan.style.display = 'inline';
-    };
-
-    // Listen to load/error events
-    img.addEventListener('load', handleLoad);
-    img.addEventListener('error', handleError);
-
-    // If image is already loaded from cache or fast load
-    if (img.complete) {
-      if (img.naturalWidth > 0) {
-        handleLoad();
-      } else {
-        handleError();
-      }
-    }
-  });
-</script>
