@@ -17,7 +17,7 @@ export const eng: LanguageTranslations = {
   skills_subtitle: "A curated selection of tools used to engineer high-availability enterprise solutions.",
   skills_categories: [
     {
-      title: "Lenguajes",
+      title: "Languages",
       items: ["Python", "TypeScript", "SQL"]
     },
     {
@@ -29,11 +29,11 @@ export const eng: LanguageTranslations = {
       items: ["Next.js", "React", "Tailwind CSS"]
     },
     {
-      title: "Bases de Datos",
+      title: "Databases",
       items: ["PostgreSQL", "MSSQL", "MySQL", "MongoDB"]
     },
     {
-      title: "Herramientas y Entorno",
+      title: "Tools & Environment",
       items: ["Linux", "Docker", "Git", "Neovim", "JWT"]
     },
     {
