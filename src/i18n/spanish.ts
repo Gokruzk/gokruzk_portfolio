@@ -88,7 +88,7 @@ export const spn: LanguageTranslations = {
       category: 'Desarrollo Full-Stack',
       title: 'Plataforma Colaborativa de Encuestas',
       description: 'Desarrollé una plataforma de encuestas colaborativas utilizando Django Rest Framework y PostgreSQL. Utilicé Django Channels para implementar WebSockets para actualizaciones de encuestas en vivo. Mi trabajo incluyó la gestión y creación de migraciones semilla para asegurar entornos de desarrollo y producción consistentes.',
-      tags: ['Python', 'TypeScript', 'Django', 'Next.js', 'PostgreSQL', 'WebSockets', 'JWT'],
+      tags: ['Python', 'TypeScript', 'Django', 'Next.js', 'MySQL', 'WebSockets', 'JWT'],
       image: '/survey_platform.png'
     },
     {
