@@ -1,5 +1,6 @@
 ---
 import { translations } from '../i18n/translations';
+import { getSvgPath } from '../utils/techIcons';
 
 interface Props {
   lang?: 'en' | 'es';
@@ -26,33 +27,6 @@ const categoryIcons: Record<string, string> = {
 const getIcon = (title: string) => {
   return categoryIcons[title] || "terminal";
 };
-
-// Map tech to local SVG path from public folder
-const svgMapping: Record<string, string> = {
-  "python": "/python.svg",
-  "typescript": "/typescript.svg",
-  "sql": "/sql.svg",
-  "django (drf)": "/djangorest.svg",
-  "fastapi": "/fastapi.svg",
-  "next.js": "/nextjs.svg",
-  "react": "/react.svg",
-  "tailwind css": "/tailwindcss.svg",
-  "postgresql": "/postgresql.svg",
-  "mysql": "/mysql.svg",
-  "mongodb": "/mongodb.svg",
-  "linux": "/linux.svg",
-  "docker": "/docker.svg",
-  "vercel": "/vercel.svg",
-  "aws": "/aws.svg",
-  "gcp": "/gcp.svg",
-  "git": "/git.svg",
-  "neovim": "/neovim.svg",
-  "mssql": "/mssql.svg"
-};
-
-const getSvgPath = (tech: string) => {
-  return svgMapping[tech.toLowerCase()] || "";
-};
 ---
 
 <section class="skills-section" id="skills">
@@ -77,7 +51,15 @@ const getSvgPath = (tech: string) => {
               return (
                 <span class="skill-tag" title={item}>
                   {svgPath ? (
-                    <img src={svgPath} alt={item} class="tech-icon-img" />
+                    <>
+                      <img 
+                        src={svgPath} 
+                        alt={item} 
+                        class="tech-icon-img" 
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"
+                      />
+                      <span class="tech-text" style="display: none;">{item}</span>
+                    </>
                   ) : (
                     <span class="tech-text">{item}</span>
                   )}
