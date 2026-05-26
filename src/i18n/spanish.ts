@@ -2,6 +2,7 @@ import type { LanguageTranslations } from './types';
 
 export const spn: LanguageTranslations = {
   title: "NIGELL JAMA | Portafolio Técnico",
+  nav_home: "Inicio",
   nav_projects: "Proyectos",
   nav_skills: "Habilidades",
   nav_contact: "Contacto",

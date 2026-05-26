@@ -16,6 +16,7 @@ const t = translations[lang];
     </div>
     
     <nav class="nav-links">
+      <a href={lang === 'es' ? "/es" : "/"}>{t.nav_home}</a>
       <a href={lang === 'es' ? "/es#projects" : "/#projects"}>{t.nav_projects}</a>
       <a href={lang === 'es' ? "/es#skills" : "/#skills"}>{t.nav_skills}</a>
       <a href={lang === 'es' ? "/es#contact" : "/#contact"}>{t.nav_contact}</a>

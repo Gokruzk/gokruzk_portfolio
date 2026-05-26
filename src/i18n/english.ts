@@ -2,6 +2,7 @@ import type { LanguageTranslations } from './types';
 
 export const eng: LanguageTranslations = {
   title: "NIGELL JAMA | Technical Portfolio",
+  nav_home: "Home",
   nav_projects: "Projects",
   nav_skills: "Skills",
   nav_contact: "Contact",
