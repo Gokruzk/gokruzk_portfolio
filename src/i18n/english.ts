@@ -88,7 +88,7 @@ export const eng: LanguageTranslations = {
       category: 'Full-Stack Development',
       title: 'Collaborative Survey Platform',
       description: 'Developed a collaborative survey platform using Django Rest Framework and PostgreSQL. I utilized Django Channels to implement WebSockets for live survey updates. My work included managing and creating seed migrations to ensure consistent development and production environments.',
-      tags: ['Python', 'TypeScript', 'Django', 'Next.js', 'PostgreSQL', 'WebSockets', 'JWT'],
+      tags: ['Python', 'TypeScript', 'Django', 'Next.js', 'MySQL', 'WebSockets', 'JWT'],
       image: '/survey_platform.png'
     },
     {
