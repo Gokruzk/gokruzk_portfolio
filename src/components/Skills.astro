@@ -1,5 +1,6 @@
 ---
 import { translations } from '../i18n/translations';
+import { getSvgPath } from '../utils/techIcons';
 
 interface Props {
   lang?: 'en' | 'es';
@@ -45,9 +46,26 @@ const getIcon = (title: string) => {
             <h3 class="category-title">{category.title}</h3>
           </div>
           <div class="skills-tags">
-            {category.items.map(item => (
-              <span class="skill-tag">{item}</span>
-            ))}
+            {category.items.map(item => {
+              const svgPath = getSvgPath(item);
+              return (
+                <span class="skill-tag" title={item}>
+                  {svgPath ? (
+                    <>
+                      <img 
+                        src={svgPath} 
+                        alt={item} 
+                        class="tech-icon-img" 
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"
+                      />
+                      <span class="tech-text" style="display: none;">{item}</span>
+                    </>
+                  ) : (
+                    <span class="tech-text">{item}</span>
+                  )}
+                </span>
+              );
+            })}
           </div>
         </div>
       ))}
@@ -129,20 +147,29 @@ const getIcon = (title: string) => {
   }
 
   .skill-tag {
-    font-family: var(--font-mono);
-    font-size: 0.812rem;
-    padding: 0.35rem 0.75rem;
-    background-color: var(--bg-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    min-width: 3.25rem;
+    height: 3.25rem;
+    background-color: #ffffff;
     border: 1px solid var(--border-color);
-    color: var(--text-secondary);
     border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
+    box-sizing: border-box;
+  }
+
+  .tech-icon-img {
+    width: 2.25rem;
+    height: 2.25rem;
+    object-fit: contain;
   }
 
   .skill-tag:hover {
     border-color: var(--primary);
-    color: var(--primary);
     background-color: var(--primary-light);
     transform: translateY(-2px);
   }
 </style>
+

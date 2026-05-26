@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@dev.icons/core": "^1.1.0",
     "astro": "^6.3.7"
   }
 }

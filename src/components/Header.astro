@@ -47,7 +47,7 @@ const t = translations[lang];
         <span class="material-symbols-outlined theme-icon-dark">dark_mode</span>
         <span class="material-symbols-outlined theme-icon-light">light_mode</span>
       </button>
-      <button class="solid-btn">{t.resume}</button>
+      <a href={lang === 'es' ? '/CV-Jama_Nigell_ES.pdf' : '/CV-Jama_Nigell.pdf'} download class="solid-btn">{t.resume}</a>
     </div>
   </div>
 </header>
@@ -249,8 +249,22 @@ const t = translations[lang];
   }
 
   @media (min-width: 768px) {
+    .header-container {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+    }
+
+    .logo-group {
+      justify-self: start;
+    }
+
     .nav-links {
       display: flex;
+      justify-self: center;
+    }
+
+    .actions {
+      justify-self: end;
     }
   }
 </style>
@@ -278,5 +292,34 @@ const t = translations[lang];
     document.addEventListener('click', () => {
       langContainer.classList.remove('open');
     });
+  }
+
+  // Preserve scroll position on language change
+  const langOptions = document.querySelectorAll('.lang-option');
+  langOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+    });
+  });
+
+  // Restore scroll position on load
+  const savedScroll = sessionStorage.getItem('scrollPosition');
+  if (savedScroll !== null) {
+    const scrollY = parseInt(savedScroll, 10);
+    window.scrollTo(0, scrollY);
+    
+    // Instantly show the body exactly at the restored scroll position
+    document.documentElement.classList.remove('js-scroll-restoring');
+    
+    // Fallback for dynamic content loading shifts
+    window.addEventListener('load', () => {
+      window.scrollTo(0, scrollY);
+      sessionStorage.removeItem('scrollPosition');
+    });
+    
+    // Also clear it if the load event already fired
+    if (document.readyState === 'complete') {
+      sessionStorage.removeItem('scrollPosition');
+    }
   }
 </script>

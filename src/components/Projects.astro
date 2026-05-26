@@ -1,5 +1,6 @@
 ---
 import { translations } from '../i18n/translations';
+import { getSvgPath } from '../utils/techIcons';
 
 interface Props {
   lang?: 'en' | 'es';
@@ -13,9 +14,6 @@ const t = translations[lang];
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">{t.projects_title}</h2>
-      <p class="section-subtitle">
-        {t.projects_subtitle}
-      </p>
     </div>
 
     <div class="projects-stack">
@@ -36,20 +34,37 @@ const t = translations[lang];
             <p class="project-description">{project.description}</p>
             
             <div class="project-tags">
-              {project.tags.map(tag => (
-                <span class="tag">{tag}</span>
-              ))}
+              {project.tags.map(tag => {
+                const svgPath = getSvgPath(tag);
+                return (
+                  <span class="tag" title={tag}>
+                    {svgPath ? (
+                      <>
+                        <img 
+                          src={svgPath} 
+                          alt={tag} 
+                          class="project-tag-icon"
+                          onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"
+                        />
+                        <span class="tech-text" style="display: none;">{tag}</span>
+                      </>
+                    ) : (
+                      <span class="tech-text">{tag}</span>
+                    )}
+                  </span>
+                );
+              })}
             </div>
             
             <div class="project-actions">
-              <a href={project.codeLink} class="action-link outline-action">
+              {project.codeLink &&  <a target="_blank" href={project.codeLink} class="action-link outline-action">
                 <span class="material-symbols-outlined action-icon">code</span>
                 <span>{t.projects_view_code}</span>
-              </a>
-              <a href={project.demoLink} class="action-link primary-action">
+              </a>}
+              {project.demoLink && <a target="_blank" href={project.demoLink} class="action-link primary-action">
                 <span class="material-symbols-outlined action-icon">open_in_new</span>
                 <span>{t.projects_demo}</span>
-              </a>
+              </a>}
             </div>
           </div>
         </div>
@@ -162,6 +177,7 @@ const t = translations[lang];
     color: var(--text-secondary);
     margin-bottom: var(--stack-md);
     line-height: 1.6;
+    text-align: justify;
   }
 
   .project-tags {
@@ -172,14 +188,27 @@ const t = translations[lang];
   }
 
   .tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    padding: 0.25rem 0.75rem;
+    padding: 0.35rem 0.6rem;
     background-color: var(--primary-light);
     color: var(--primary);
     border: 1px solid var(--primary-border);
     border-radius: var(--radius-full);
     font-weight: 500;
+    min-height: 2rem;
+    box-sizing: border-box;
+  }
+
+  .project-tag-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    object-fit: contain;
+    box-sizing: border-box;
   }
 
   .project-actions {

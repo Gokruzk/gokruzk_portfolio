@@ -22,7 +22,6 @@ export interface LanguageTranslations {
   }[];
   // Projects
   projects_title: string;
-  projects_subtitle: string;
   projects_view_code: string;
   projects_demo: string;
   projects_list: {
@@ -31,8 +30,8 @@ export interface LanguageTranslations {
     description: string;
     tags: string[];
     image: string;
-    codeLink: string;
-    demoLink: string;
+    codeLink?: string;
+    demoLink?: string;
   }[];
   // Contact
   contact_title: string;
