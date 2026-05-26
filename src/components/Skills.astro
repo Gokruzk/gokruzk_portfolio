@@ -1,6 +1,5 @@
 ---
 import { translations } from '../i18n/translations';
-import 'devicons/css';
 
 interface Props {
   lang?: 'en' | 'es';
@@ -28,29 +27,31 @@ const getIcon = (title: string) => {
   return categoryIcons[title] || "terminal";
 };
 
-// Map tech to devicon classes
-const deviconMapping: Record<string, string> = {
-  "python": "python",
-  "typescript": "typescript",
-  "django (drf)": "django",
-  "fastapi": "fastapi",
-  "next.js": "nextjs",
-  "react": "react",
-  "tailwind css": "tailwind",
-  "postgresql": "postgresql",
-  "mysql": "mysql",
-  "mongodb": "mongodb",
-  "linux": "linux-tux",
-  "docker": "docker",
-  "git": "git",
-  "neovim": "neovim",
-  "vercel": "vercel",
-  "aws": "aws"
+// Map tech to local SVG path from public folder
+const svgMapping: Record<string, string> = {
+  "python": "/python.svg",
+  "typescript": "/typescript.svg",
+  "sql": "/sql.svg",
+  "django (drf)": "/djangorest.svg",
+  "fastapi": "/fastapi.svg",
+  "next.js": "/nextjs.svg",
+  "react": "/react.svg",
+  "tailwind css": "/tailwindcss.svg",
+  "postgresql": "/postgresql.svg",
+  "mysql": "/mysql.svg",
+  "mongodb": "/mongodb.svg",
+  "linux": "/linux.svg",
+  "docker": "/docker.svg",
+  "vercel": "/vercel.svg",
+  "aws": "/aws.svg",
+  "gcp": "/gcp.svg",
+  "git": "/git.svg",
+  "neovim": "/neovim.svg",
+  "mssql": "/mssql.svg"
 };
 
-const getDeviconClass = (tech: string) => {
-  if (tech.toLowerCase() === 'sql') return "";
-  return deviconMapping[tech.toLowerCase()] || "";
+const getSvgPath = (tech: string) => {
+  return svgMapping[tech.toLowerCase()] || "";
 };
 ---
 
@@ -72,16 +73,14 @@ const getDeviconClass = (tech: string) => {
           </div>
           <div class="skills-tags">
             {category.items.map(item => {
-              const iconClass = getDeviconClass(item);
-              const isSql = item.toLowerCase() === 'sql';
+              const svgPath = getSvgPath(item);
               return (
                 <span class="skill-tag" title={item}>
-                  {isSql ? (
-                    <img src="/sql.svg" alt="SQL" class="tech-icon-img" />
-                  ) : iconClass ? (
-                    <i class={`devicon devicon-${iconClass} tech-icon-font`}></i>
-                  ) : null}
-                  <span class="tech-text" style={isSql || iconClass ? "display: none;" : ""}>{item}</span>
+                  {svgPath ? (
+                    <img src={svgPath} alt={item} class="tech-icon-img" />
+                  ) : (
+                    <span class="tech-text">{item}</span>
+                  )}
                 </span>
               );
             })}
@@ -169,26 +168,14 @@ const getDeviconClass = (tech: string) => {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-mono);
-    font-size: 0.812rem;
     padding: 0.5rem;
     min-width: 3.25rem;
     height: 3.25rem;
-    background-color: var(--bg-primary);
+    background-color: #ffffff;
     border: 1px solid var(--border-color);
-    color: var(--text-secondary);
     border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
     box-sizing: border-box;
-  }
-
-  .tech-icon-font {
-    font-size: 2rem;
-    color: var(--text-secondary);
-    transition: color var(--transition-fast);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .tech-icon-img {
@@ -202,8 +189,5 @@ const getDeviconClass = (tech: string) => {
     background-color: var(--primary-light);
     transform: translateY(-2px);
   }
-
-  .skill-tag:hover .tech-icon-font {
-    color: var(--primary);
-  }
 </style>
+

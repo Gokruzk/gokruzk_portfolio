@@ -47,7 +47,7 @@ const t = translations[lang];
         <span class="material-symbols-outlined theme-icon-dark">dark_mode</span>
         <span class="material-symbols-outlined theme-icon-light">light_mode</span>
       </button>
-      <button class="solid-btn">{t.resume}</button>
+      <a href={lang === 'es' ? '/CV-Jama_Nigell_ES.pdf' : '/CV-Jama_Nigell.pdf'} download class="solid-btn">{t.resume}</a>
     </div>
   </div>
 </header>

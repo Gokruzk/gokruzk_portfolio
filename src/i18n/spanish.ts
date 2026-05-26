@@ -26,7 +26,7 @@ export const spn: LanguageTranslations = {
     },
     {
       title: "Frontend",
-      items: ["Next.js", "React", "React Native", "Tailwind CSS"]
+      items: ["Next.js", "React", "Tailwind CSS"]
     },
     {
       title: "Bases de Datos",
@@ -38,7 +38,7 @@ export const spn: LanguageTranslations = {
     },
     {
       title: "Cloud",
-      items: ["Vercel", "AWS"]
+      items: ["Vercel", "AWS", "GCP"]
     }
   ],
   projects_title: "Proyectos Destacados",

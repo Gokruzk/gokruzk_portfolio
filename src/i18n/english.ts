@@ -26,7 +26,7 @@ export const eng: LanguageTranslations = {
     },
     {
       title: "Frontend",
-      items: ["Next.js", "React", "React Native", "Tailwind CSS"]
+      items: ["Next.js", "React", "Tailwind CSS"]
     },
     {
       title: "Databases",
@@ -38,7 +38,7 @@ export const eng: LanguageTranslations = {
     },
     {
       title: "Cloud",
-      items: ["Vercel", "AWS"]
+      items: ["Vercel", "AWS", "GCP"]
     }
   ],
   projects_title: "Featured Projects",

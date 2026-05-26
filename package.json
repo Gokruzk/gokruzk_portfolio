@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@dev.icons/core": "^1.1.0",
-    "astro": "^6.3.7",
-    "devicons": "^2.0.1"
+    "astro": "^6.3.7"
   }
 }

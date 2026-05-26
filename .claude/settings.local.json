@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://cdn.jsdelivr.net/npm/@dev.icons/core@1.1.0/dist/sprite/sprite-symbol.svg\")"
+    ]
+  }
+}
