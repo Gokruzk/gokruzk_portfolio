@@ -31,12 +31,11 @@ const getIcon = (title: string) => {
 const deviconMapping: Record<string, string> = {
   "python": "python/python-original.svg",
   "typescript": "typescript/typescript-original.svg",
-  "sql": "azuresqldatabase/azuresqldatabase-original.svg",
+  "sql": "sql.svg", // We will handle SQL separately in the getter, but mapping is kept
   "django (drf)": "django/django-plain.svg",
   "fastapi": "fastapi/fastapi-original.svg",
   "next.js": "nextjs/nextjs-original.svg",
   "react": "react/react-original.svg",
-  "react native": "react/react-original.svg",
   "tailwind css": "tailwindcss/tailwindcss-original.svg",
   "postgresql": "postgresql/postgresql-original.svg",
   "mssql": "microsoftsqlserver/microsoftsqlserver-original.svg",
@@ -47,13 +46,14 @@ const deviconMapping: Record<string, string> = {
   "git": "git/git-original.svg",
   "neovim": "neovim/neovim-original.svg",
   "vercel": "vercel/vercel-original.svg",
-  "aws": "amazonwebservices/amazonwebservices-original.svg"
+  "aws": "amazonwebservices/amazonwebservices-original-wordmark.svg"
 };
 
 const getDeviconUrl = (tech: string) => {
+  if (tech.toLowerCase() === 'sql') return "/sql.svg";
   const slug = deviconMapping[tech.toLowerCase()];
   if (!slug) return "";
-  return `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${slug}`;
+  return `https://cdn.devicons.dev/icons/${slug}`;
 };
 ---
 
@@ -82,10 +82,8 @@ const getDeviconUrl = (tech: string) => {
                     <img 
                       src={iconUrl} 
                       alt={item} 
-                      class="tech-icon" 
+                      class="tech-icon tech-icon-img" 
                       loading="lazy"
-                      onload="this.style.display='inline-block'; this.nextElementSibling.style.display='none';"
-                      onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';"
                       style="display: none;"
                     />
                   ) : null}
@@ -203,3 +201,35 @@ const getDeviconUrl = (tech: string) => {
     transform: translateY(-2px);
   }
 </style>
+
+<script>
+  // Robust image loader to prevent browser cache gotchas and hide text seamlessly
+  const images = document.querySelectorAll('.tech-icon-img') as NodeListOf<HTMLImageElement>;
+  
+  images.forEach(img => {
+    const textSpan = img.nextElementSibling as HTMLSpanElement;
+
+    const handleLoad = () => {
+      img.style.display = 'inline-block';
+      if (textSpan) textSpan.style.display = 'none';
+    };
+
+    const handleError = () => {
+      img.style.display = 'none';
+      if (textSpan) textSpan.style.display = 'inline';
+    };
+
+    // Listen to load/error events
+    img.addEventListener('load', handleLoad);
+    img.addEventListener('error', handleError);
+
+    // If image is already loaded from cache or fast load
+    if (img.complete) {
+      if (img.naturalWidth > 0) {
+        handleLoad();
+      } else {
+        handleError();
+      }
+    }
+  });
+</script>
