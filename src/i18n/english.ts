@@ -17,60 +17,86 @@ export const eng: LanguageTranslations = {
   skills_subtitle: "A curated selection of tools used to engineer high-availability enterprise solutions.",
   skills_categories: [
     {
-      title: "Languages",
+      title: "Lenguajes",
       items: ["Python", "TypeScript", "SQL"]
     },
     {
       title: "Backend",
-      items: ["Django (DRF)", "FastAPI"]
+      items: ["Django (DRF)", "FastAPI", "Prisma", "SQLAlchemy"]
     },
     {
       title: "Frontend",
       items: ["Next.js", "React", "Tailwind CSS"]
     },
     {
-      title: "Databases",
+      title: "Bases de Datos",
       items: ["PostgreSQL", "MSSQL", "MySQL", "MongoDB"]
     },
     {
-      title: "Tools & Environment",
-      items: ["Linux", "Docker", "Git", "Neovim"]
+      title: "Herramientas y Entorno",
+      items: ["Linux", "Docker", "Git", "Neovim", "JWT"]
     },
     {
       title: "Cloud",
-      items: ["Vercel", "AWS", "GCP"]
+      items: ["Vercel", "AWS", "GCP", "Github", "Gitlab"]
     }
   ],
   projects_title: "Featured Projects",
   projects_view_code: "View Code",
-  projects_demo: "Live Demo",
+  projects_demo: "View",
   projects_list: [
     {
-      category: 'E-commerce Engine',
-      title: 'Scalable Transactional Core',
-      description: 'A headless commerce engine built with Next.js, Stripe, and Redis. Engineered to handle 10k+ concurrent checkouts with sub-100ms latency.',
-      tags: ['Next.js', 'Redis', 'Stripe'],
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDly6HSRNX1J2m-yZIBCKinv8_QWKs5mYOaLuIsaeBpSMOV39vPRcFJX6oBWgsOIpLQq29ySEqrSyVMvCwcmwGGJv4mV1O1lwGUhqDgtT8fcQ4LuHQkzT4_mMDMzshjCQ-chWwRJgW9EKOuuoZa4Gn9L4GqljlBBojKDQ3f0pe7SiggUuzre3WfMi9gLFtxIz5XJBfurU3h3hwHDs7pqiA6e2gz8_UQraj7mM18UTfvehTBzyGlgB6iNDfr5zjX0K0VCbxSjx9Ti-Ls',
-      codeLink: '#',
-      demoLink: '#'
+      category: 'ConTech Platform',
+      title: 'Payconer Construction Hub',
+      description: 'A robust Construction Technology (ConTech) platform engineered to optimize project workflows and resource management. Built on a high-availability Django backend coupled with a modern Next.js frontend to handle real-time field operations and construction metrics with top-tier security.',
+      tags: ['Python', 'TypeScript', 'Django', 'Next.js', 'PostgreSQL', 'JWT', 'GitLab', 'Linux'],
+      image: '/payconer.png',
+      demoLink: 'https://www.payconer.com/'
     },
     {
-      category: 'Real-time Analytics Dashboard',
-      title: 'Event-Driven Insights',
-      description: 'Real-time visualization platform processing telemetry data from IoT sensors via Apache Kafka and WebSockets.',
-      tags: ['Kafka', 'WebSockets', 'D3.js'],
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBmGPEAr1OTW6DgWFeOR97tR8iS3qVg8Icz4qy5WrOrqJvGPUj9jOixBmdDXrruDd9Q16pipfKOtxu87yE9DnGl0YMG2ohpTIRMMZ_fuCA_DmHS0rMI8YSvMaDGfpyQIgu4BJqaD-M4Ez2I6e6NwmxdKtNLj2rgqBis-AzRIEbfMU99RPRwK6Vf_dnE_SZAsQtM_9ggu0HNPoUKaVHIizJVvHhmgvLePiZQogjtuys62gz8rTryc4rYreKupwgdd1d2wxaL1cNJ7u_-',
-      codeLink: '#',
-      demoLink: '#'
+      category: 'Academic Operations',
+      title: 'ESPOCH Inventory System',
+      description: 'A secure inventory management system designed and developed from scratch for university departments at ESPOCH. Features high-performance REST APIs, rigorous stakeholder requirements gathering, and clean databases to efficiently track and audit institutional assets.',
+      tags: ['Python', 'TypeScript', 'FastAPI', 'Next.js', 'Prisma' ,'PostgreSQL', 'JWT', 'GitHub'],
+      image: '/inventarioespoch.png',
+      demoLink: 'https://inventariosoftware.espoch.edu.ec/'
     },
     {
-      category: 'Social Graph API',
-      title: 'Relational Infrastructure',
-      description: 'High-performance GraphQL API built on Neo4j for managing complex user relationships and recommendation engines.',
-      tags: ['GraphQL', 'Neo4j', 'Node.js'],
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCpmMEpyvslfDGRoN0gDm-IOmlwA2tT0iT3Q9FaFWL6taU62QJCztvKYBnacDLT007ev_IusyhWdBg5hqACQfbX0MSwJW3a43viyIVgKKXflRD-WNIyblUeJ98usRGfB1hykol-YwtWhhwJ3Y9TL08dNs7fIIoSPuOngh5yiZYYi1w0J2Sxh3URFG42un2Iq2GXeoT0wsvQNAnaAT3QS4mZ2DUEahq3fgqio4QZ9WlkoR9gt6XjRxyyoaN-LB0GKVZhjD3K8Mep0piw',
-      codeLink: '#',
-      demoLink: '#'
+      category: 'Full-Stack Development',
+      title: 'Fitness Application',
+      description: 'Designed and developed a full-stack mobile application for gym workout planning and routine management. Developed the reactive frontend in React Native alongside a high-performance FastAPI and MySQL backend. Integrated Amazon S3 for media storage, implemented WebSockets to provide real-time alerts between users and trainers, and managed automated email notifications with GCP.',
+      tags: ['Python', 'TypeScript', 'React Native', 'FastAPI', 'Prisma' ,'MySQL', 'WebSockets', 'JWT', 'AWS', 'GCP'],
+      image: '/fitness.png'
+    },
+    {
+      category: 'Full-Stack Engineering',
+      title: 'Device Integration & Backend',
+      description: 'Led the design and implementation of a high-performance cross-platform application and its backend using FastAPI, Next.js, and React Native. Engineered a Hexagonal Architecture (Ports and Adapters) to decouple business logic, implementing WebSockets and Server-Sent Events (SSE) for bi-directional data flow between devices and frontend. Applied advanced design patterns (Singleton, Factory, Repository) alongside GCP for secure authentication.',
+      tags: ['Python', 'TypeScript', 'FastAPI', 'React Native', 'Next.js', 'WebSockets', 'Prisma','PostgreSQL', 'JWT', 'GCP'],
+      image: '/device_backend.png'
+    },
+    {
+      category: 'Backend Development',
+      title: 'Photo Manager Service',
+      description: 'Developed a photo management backend emphasizing architectural flexibility. Designed with FastAPI, Alembic, and Prisma using a Hexagonal Architecture, the system successfully decouples business logic to allow seamless switching between different ORMs. Implemented OAuth2 for security and utilized uv for a highly reproducible and fast development environment.',
+      tags: ['Python', 'FastAPI', 'Alembic', 'Prisma' ,'MySQL', 'PostgreSQL', 'JWT'],
+      image: '/photo_manager.png',
+      codeLink: 'https://github.com/Gokruzk/photo_manager'
+    },
+    {
+      category: 'Full-Stack Development',
+      title: 'Collaborative Survey Platform',
+      description: 'Developed a collaborative survey platform using Django Rest Framework and PostgreSQL. I utilized Django Channels to implement WebSockets for live survey updates. My work included managing and creating seed migrations to ensure consistent development and production environments.',
+      tags: ['Python', 'TypeScript', 'Django', 'Next.js', 'PostgreSQL', 'WebSockets', 'JWT'],
+      image: '/survey_platform.png'
+    },
+    {
+      category: 'Full-Stack Development',
+      title: 'Restaurant Booking Platform',
+      description: 'Designed and developed a full-stack restaurant booking and management application. Built a high-performance RESTful API using FastAPI and SQLAlchemy for robust ORM management, securing endpoints with JWT authentication. Integrated an interactive Next.js frontend to handle efficient real-time CRUD operations, table status tracking, and booking schedules.',
+      tags: ['Python', 'TypeScript', 'FastAPI', 'Next.js', 'SQLAlchemy', 'PostgreSQL', 'JWT'],
+      image: '/comedor_app.png',
+      codeLink: 'https://github.com/Gokruzk/comedor_app/tree/refactor_backend'
     }
   ],
   contact_title: "Initiate Handshake",
