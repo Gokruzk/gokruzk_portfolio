@@ -1,6 +1,7 @@
 export interface LanguageTranslations {
   title: string;
   // Header
+  nav_home: string;
   nav_projects: string;
   nav_skills: string;
   nav_contact: string;

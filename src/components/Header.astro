@@ -16,8 +16,9 @@ const t = translations[lang];
     </div>
     
     <nav class="nav-links">
-      <a href={lang === 'es' ? "/es#projects" : "/#projects"}>{t.nav_projects}</a>
+      <a href={lang === 'es' ? "/es" : "/"}>{t.nav_home}</a>
       <a href={lang === 'es' ? "/es#skills" : "/#skills"}>{t.nav_skills}</a>
+      <a href={lang === 'es' ? "/es#projects" : "/#projects"}>{t.nav_projects}</a>
       <a href={lang === 'es' ? "/es#contact" : "/#contact"}>{t.nav_contact}</a>
     </nav>
     
@@ -51,6 +52,25 @@ const t = translations[lang];
     </div>
   </div>
 </header>
+
+<nav class="bottom-nav">
+  <a href={lang === 'es' ? "/es" : "/"} class="bottom-nav-item">
+    <span class="material-symbols-outlined">home</span>
+    <span class="bottom-nav-label">{t.nav_home}</span>
+  </a>
+  <a href={lang === 'es' ? "/es#skills" : "/#skills"} class="bottom-nav-item">
+    <span class="material-symbols-outlined">data_object</span>
+    <span class="bottom-nav-label">{t.nav_skills}</span>
+  </a>
+  <a href={lang === 'es' ? "/es#projects" : "/#projects"} class="bottom-nav-item">
+    <span class="material-symbols-outlined">code</span>
+    <span class="bottom-nav-label">{t.nav_projects}</span>
+  </a>
+  <a href={lang === 'es' ? "/es#contact" : "/#contact"} class="bottom-nav-item">
+    <span class="material-symbols-outlined">alternate_email</span>
+    <span class="bottom-nav-label">{t.nav_contact}</span>
+  </a>
+</nav>
 
 <style>
   .sticky-header {
@@ -265,6 +285,69 @@ const t = translations[lang];
 
     .actions {
       justify-self: end;
+    }
+  }
+
+  /* Bottom Navigation Styles */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4.5rem;
+    background-color: var(--header-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
+    transition: all var(--transition-fast);
+  }
+
+  :global(html.dark) .bottom-nav {
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    flex: 1;
+    height: 100%;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+  }
+
+  .bottom-nav-item:hover,
+  .bottom-nav-item:focus {
+    color: var(--primary);
+  }
+
+  .bottom-nav-item span.material-symbols-outlined {
+    font-size: 1.5rem;
+  }
+
+  .bottom-nav-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 767px) {
+    :global(body) {
+      padding-bottom: 4.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .bottom-nav {
+      display: none;
     }
   }
 </style>
