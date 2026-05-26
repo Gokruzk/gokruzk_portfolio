@@ -293,4 +293,33 @@ const t = translations[lang];
       langContainer.classList.remove('open');
     });
   }
+
+  // Preserve scroll position on language change
+  const langOptions = document.querySelectorAll('.lang-option');
+  langOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+    });
+  });
+
+  // Restore scroll position on load
+  const savedScroll = sessionStorage.getItem('scrollPosition');
+  if (savedScroll !== null) {
+    const scrollY = parseInt(savedScroll, 10);
+    window.scrollTo(0, scrollY);
+    
+    // Instantly show the body exactly at the restored scroll position
+    document.documentElement.classList.remove('js-scroll-restoring');
+    
+    // Fallback for dynamic content loading shifts
+    window.addEventListener('load', () => {
+      window.scrollTo(0, scrollY);
+      sessionStorage.removeItem('scrollPosition');
+    });
+    
+    // Also clear it if the load event already fired
+    if (document.readyState === 'complete') {
+      sessionStorage.removeItem('scrollPosition');
+    }
+  }
 </script>
